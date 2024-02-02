@@ -4,7 +4,7 @@ const queries=require('./queries');
 
 // Function to retrieve all product list of a company as per the product's available units
 const getAllProductsForCompany = (req, res) => {
-    const companyId = parseInt(req.params.productId);
+    const companyId = parseInt(req.params.cmpId);
     pool.query(queries.getAllProductsForCompany, [companyId], (error, results) => {
         if (error) {
             console.error(error);
@@ -17,7 +17,7 @@ const getAllProductsForCompany = (req, res) => {
 
 // Function to retrieve product name, original price, price after discount for a given company
 const getProductDetailsForCompany = (req, res) => {
-    const companyId = parseInt(req.params.detailsId);
+    const companyId = parseInt(req.params.cmpId);
     pool.query(queries.getProductDetailsForCompany, [companyId], (error, results) => {
         if (error) {
             console.error(error);
@@ -30,7 +30,7 @@ const getProductDetailsForCompany = (req, res) => {
 
 // Function to retrieve name of the products with discount more than average discount for a given company
 const getProductsAboveAvgDiscount = (req, res) => {
-    const companyId = parseInt(req.params.avgId);
+    const companyId = parseInt(req.params.cmpId);
     pool.query(queries.getProductsAboveAvgDiscount, [companyId], (error, results) => {
         if (error) {
             console.error(error);
